@@ -1,16 +1,17 @@
 const express = require('express');
-const app = express()
-
-app.use(express.json())
-
-app.use('/api/auth', require("./routes"))
-
-const port  = 3000;
-
-
-const connectDB = require("./db");
+const dotenv = require("dotenv")
+dotenv.config()
 
 connectDB()
+
+const app = express()
+const port  = process.env.PORT || 3000;
+
+
+app.use(express.json())
+app.use('/api/auth', require("./src/routes"))
+
+
 
 
 const server = app.listen(port, () => {
@@ -26,4 +27,4 @@ process.on("unhandledRejection", err => {
 
 
 
-module.exports = {app};
+module.exports = {server};

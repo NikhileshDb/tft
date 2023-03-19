@@ -51,3 +51,14 @@ exports.login = async (req,res,next) => {
         })
     }
 }
+
+
+
+
+
+exports.test = async (req, res, next) => {
+    return res.status(200).json({
+        message: "It is working",
+
+    })
+}
